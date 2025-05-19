@@ -75,8 +75,8 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     ## dir
-    parser.add_argument("--camera_config_dir", type=str, default="./datasets/camera_config.yaml")
-    parser.add_argument("--benchmark_dir", type=str, default="/data2/feiran/datasets/final_release")
+    parser.add_argument("--camera_config_dir", type=str, default="/datasets/camera_config.yaml")
+    parser.add_argument("--benchmark_dir", type=str, default="/datasets/final_release")
     parser.add_argument("--checkpoint_dir", type=str, default="./checkpoints/baseline.bin")
     parser.add_argument("--device", type=str, default="cuda:3")
 

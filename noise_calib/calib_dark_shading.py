@@ -96,7 +96,7 @@ if __name__ == "__main__":
     camera_type = "sonyzve10m2"
     suffix = "ARW"
     all_iso = [800, 1250, 1600, 3200, 6400]
-    root_dir = f"/Users/feiranli/Desktop/dataset/AIM_challenge/{camera_type}"
+    root_dir = f"./AIM_challenge/{camera_type}"
 
     make_dir(os.path.join(root_dir, "calib_res"))
     make_dir(os.path.join(root_dir, "calib_res/vis"))

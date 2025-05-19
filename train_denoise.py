@@ -156,8 +156,8 @@ if __name__ == "__main__":
     parser.add_argument("--n_crop_per_img", type=int, default=8)
     parser.add_argument("--train_dgain_range", type=list, default=[10, 200])
     parser.add_argument("--save_freq", type=int, default=100)
-    parser.add_argument("--clean_img_dir", type=str, default="/data/feiran/datasets/sid_sony/Sony/long")
-    parser.add_argument("--benchmark_dir", type=str, default="/data2/feiran/datasets/aim_challenge_release_data")
+    parser.add_argument("--clean_img_dir", type=str, default="/datasets/sid_sony/Sony/long")
+    parser.add_argument("--benchmark_dir", type=str, default="/datasets/aim_challenge_release_data")
     ## others
     parser.add_argument("--n_worker", type=int, default=16)
     parser.add_argument("--seed", type=int, default=0, help="random seed")
