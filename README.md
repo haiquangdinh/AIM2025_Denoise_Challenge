@@ -1,8 +1,7 @@
 ## AIM 2025 Challenge on Low-light Real-world RAW Image Denoising Using Synthetic Data
 
-WIP
 
-This repository holds the baseline method for the ICCV-associated AIM 2025 RAW image denoising challenge. In this challenge, we seek algorithms that address the low-light RAW image denosing problem without reliance on real-world noisy-clean image pairs, such as noise-synthesis based methods.
+This repository holds the baseline method for the ICCV-associated AIM 2025 RAW image denoising challenge. In this challenge, we seek algorithms that address the low-light RAW image denosing problem without reliance on real-world noisy-clean image pairs in a **camera-agnostic manner (i.e., a single network applicable to multiple cameras)**, such as noise-synthesis based methods. 
 
 
 ## Introduction of the baseline method
