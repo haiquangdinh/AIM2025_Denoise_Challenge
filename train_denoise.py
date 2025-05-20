@@ -91,30 +91,19 @@ def main(args):
     make_directory("./logs")
     logfile = f"./logs/{args.task}.log"
 
-    ## resume training
-    if args.resume_train is not None:
-        cp = torch.load(args.resume_train, map_location="cpu", weights_only=False)
-        model.load_state_dict(cp["model"])
-        optimizer.load_state_dict(cp["optimizer"])
-        scheduler.load_state_dict(cp["scheduler"])
-        start_epoch = cp["epoch"] + 1
-        accelerator.print(f">>>>> resuming training from epoch {start_epoch}")
-    else:
-        start_epoch = 0
-        ## logging argparse
-        if accelerator.is_local_main_process:
-            open(logfile, "w").close()
-            with open(logfile, "w") as f:
-                for arg, value in vars(args).items():
-                    f.write(f"{arg}: {value}\n")
-                f.write("\n\n\n\n\n")
-        accelerator.print(">>>>> no resumed checkpoint, training from scratch")
-
+    ## logging argparse
+    if accelerator.is_local_main_process:
+        open(logfile, "w").close()
+        with open(logfile, "w") as f:
+            for arg, value in vars(args).items():
+                f.write(f"{arg}: {value}\n")
+            f.write("\n\n\n\n\n")
+   
     ## put all things to accelerator
     model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
 
     ## train
-    for epoch in range(start_epoch + 1, args.n_epoch + 1):
+    for epoch in range(1, args.n_epoch + 1):
         train_loss, train_psnr = train_one_ep(model, train_loader, optimizer, criterion, accelerator, args)
         if not accelerator.optimizer_step_was_skipped:
             scheduler.step()
@@ -124,9 +113,6 @@ def main(args):
         if epoch % args.save_freq == 0:
             state_dict = {
                 "model": accelerator.get_state_dict(model),
-                "optimizer": accelerator.get_state_dict(optimizer),
-                "scheduler": scheduler.state_dict(),
-                "epoch": epoch,
             }
             accelerator.save(state_dict, f"./checkpoints/{args.task}/epoch_{epoch}.bin")
             time.sleep(5)
@@ -148,8 +134,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     ## train-related
     parser.add_argument("--task", type=str, default="baseline")
-    parser.add_argument("--resume_train", type=str, default=None)
-    parser.add_argument("--n_epoch", type=int, default=1000)
+    parser.add_argument("--n_epoch", type=int, default=500)
     parser.add_argument("--train_patch_size", type=int, default=512)
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--bs", type=int, default=1)
