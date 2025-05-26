@@ -165,9 +165,6 @@ cython_debug/
 
 
 # my checkpoints and res images
-checkpoints/
 saved_res_for_submission/  
 server_eval/
 __pycache__/
-logs/
-checkpoints/

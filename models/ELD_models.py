@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from ptflops import get_model_complexity_info
 
 
 class UNetSeeInDark(nn.Module):
@@ -95,3 +96,15 @@ class UNetSeeInDark(nn.Module):
         out = self.conv10_1(conv9)
         return out[:, :, :h, :w]
 
+
+if __name__ == '__main__':
+
+    model = UNetSeeInDark(nf=32)
+    x = torch.randn(1, 4, 512, 512)
+
+
+    with torch.cuda.device(0):
+        macs, params = get_model_complexity_info(
+            model, (4, 512, 512), as_strings=True, print_per_layer_stat=False, verbose=False
+        )
+    print(f"MACs: {macs}, Parameters: {params}")

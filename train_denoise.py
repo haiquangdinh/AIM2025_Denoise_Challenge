@@ -98,7 +98,7 @@ def main(args):
             for arg, value in vars(args).items():
                 f.write(f"{arg}: {value}\n")
             f.write("\n\n\n\n\n")
-   
+
     ## put all things to accelerator
     model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
 
@@ -108,12 +108,10 @@ def main(args):
         if not accelerator.optimizer_step_was_skipped:
             scheduler.step()
 
-        ## checkpoint
+       ## checkpoint
         accelerator.wait_for_everyone()
         if epoch % args.save_freq == 0:
-            state_dict = {
-                "model": accelerator.get_state_dict(model),
-            }
+            state_dict = {"model": accelerator.get_state_dict(model)}
             accelerator.save(state_dict, f"./checkpoints/{args.task}/epoch_{epoch}.bin")
             time.sleep(5)
 
@@ -141,8 +139,8 @@ if __name__ == "__main__":
     parser.add_argument("--n_crop_per_img", type=int, default=8)
     parser.add_argument("--train_dgain_range", type=list, default=[10, 200])
     parser.add_argument("--save_freq", type=int, default=100)
-    parser.add_argument("--clean_img_dir", type=str, default="/datasets/sid_sony/Sony/long")
-    parser.add_argument("--benchmark_dir", type=str, default="/datasets/aim_challenge_release_data")
+    parser.add_argument("--clean_img_dir", type=str, default="/data/feiran/datasets/sid_sony/Sony/long")
+    parser.add_argument("--benchmark_dir", type=str, default="/data2/feiran/datasets/dev_phase_release")
     ## others
     parser.add_argument("--n_worker", type=int, default=16)
     parser.add_argument("--seed", type=int, default=0, help="random seed")
