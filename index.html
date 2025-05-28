@@ -117,7 +117,7 @@
 
 <img src="./website/static/rawdenoise.png" alt="noise modelling"  width="1280" />
 <p>
-For the noise synthesis pipeline, we provide a baseline solution based on the methods proposed <a href="https://arxiv.org/abs/2505.00045" target="_blank">here</a>. More details can be found at our <a href="https://github.com/SonyResearch/AIM2025_Denoise_Challenge" target="_blank">starter kit repo</a>.
+For the noise synthesis pipeline, we provide a baseline solution based on the method proposed <a href="https://arxiv.org/abs/2505.00045" target="_blank">here</a>. More details can be found at our <a href="https://github.com/SonyResearch/AIM2025_Denoise_Challenge" target="_blank">starter kit repo</a>.
 </p>
 
 <img src="./website/static/noise_synth_baseline.png" alt="noise modelling baseline"  width="1280" />
@@ -126,7 +126,7 @@ For the noise synthesis pipeline, we provide a baseline solution based on the me
     The proposed solutions will be rigorously evaluated using both full-reference and no-reference image quality assessment (IQA) metrics, ensuring a comprehensive assessment of their effectiveness and generalizability.
 </p>
 <p>
-The top ranked participants will be awarded and invited to describe their solution to the associated AIM at ICCV 2025. The results of the challenge will be published at AIM 2025 workshop (ICCV Proceedings).
+The top-ranked participants will be awarded and invited to describe their solution to the associated the AIM at ICCV 2025. The results of the challenge will be published at AIM 2025 workshop (ICCV Proceedings).
 </p>
 
         </div>
@@ -151,10 +151,10 @@ The top ranked participants will be awarded and invited to describe their soluti
       <img src="./website/static/example_shot.png" alt="dataset example"  width="1280" />
 <strong>Training</strong>
 <p>Clean images for training are unrestricted, allowing participants to utilize any dataset as long as its details are thoroughly documented in the final factsheet.</p>
-<p>As a starting point, we recommend the clean images from the SID dataset (Sony split), which can be accessed at <a href="https://cchen156.github.io/SID.html" target="_blank">here</a>.</p>
+<p>As a starting point, we recommend the clean images from the SID dataset (Sony split), which can be accessed <a href="https://cchen156.github.io/SID.html" target="_blank">here</a>.</p>
 
 <strong>Testing</strong>
-<p>Please register to the competition via <a href="https://www.codabench.org/competitions/8529/" target="_blank">codabench</a> to access the benchmark data and sample submission.</p>
+<p>Please register for the competition via <a href="https://www.codabench.org/competitions/8529/" target="_blank">codabench</a> to access the benchmark data and sample submission.</p>
 <p>For benchmarking, we collected a dataset using four cameras: SonyA7R4, SonyA6700, SonyZVE10M2, and Canon70D.</p>
 <p>To support the formulation of noise synthesis pipelines, we provide calibrated system gains and dark shading maps for each camera. The dataset includes two types of scenes:</p>
 <ul>
@@ -163,7 +163,7 @@ The top ranked participants will be awarded and invited to describe their soluti
 </ul>
 <p>This benchmark dataset serves as a robust foundation for participants to develop and evaluate their camera-agnostic RAW denoising solutions.</p>
 <p>More details on the dataset structure can be found in our <a href="https://github.com/SonyResearch/AIM2025_Denoise_Challenge" target="_blank">starter kit repo</a>.</p>
-<p><strong>The Dataset is for this challenge and research purposes only. Commercial use is not permitted.</strong></p>
+<p><strong>The dataset is for this challenge and research purposes only. Commercial use is not permitted.</strong></p>
 
   </div>
 </section>
@@ -193,9 +193,9 @@ The top ranked participants will be awarded and invited to describe their soluti
 
     <strong>Efficiency Requirements</strong>
     <ul>
-        <li>Maximum 15 Million parameters</li>
-        <li>Ensembles of multiple models are not allowed</li>
-        <li>FLOPs/MACs on (1, 4, 512, 512) shall be less than 150GMacs</li>
+        <li>Maximum 15 million parameters for the nerual network</li>
+        <li>MACs for the input shape of (1, 4, 512, 512) shall be less than 150 GMacs</li>
+        <li>Ensembles of multiple models not allowed</li>
     </ul>
     <p>More guidelines can be found in the <a href="https://github.com/SonyResearch/AIM2025_Denoise_Challenge/" target="_blank">starter kit repo</a>.</p>
 
