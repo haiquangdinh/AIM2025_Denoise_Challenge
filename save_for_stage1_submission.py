@@ -56,12 +56,19 @@ def infer_and_save_for_submission(model, args):
             img_name = data["img_name"][0]
             denoised = model(noisy)  ## if the output is not [1, 4, H, W], please change it to [1, 4, H, W]
 
+            # ## processing for saving
+            # denoised = denoised.detach().cpu().squeeze(0).permute(1, 2, 0).numpy()
+            # denoised = np.clip(denoised, 0, 1)
+            # denoised = center_crop_numpy_img(denoised, args.eval_crop_size)
+            # denoised = np.uint16(denoised * 65535)
+            # np.save(os.path.join(args.save_dir, cam_model, f"{img_name}.npy"), denoised)
+
             ## processing for saving
-            denoised = denoised.detach().cpu().squeeze(0).permute(1, 2, 0).numpy()
-            denoised = np.clip(denoised, 0, 1)
-            denoised = center_crop_numpy_img(denoised, args.eval_crop_size)
-            denoised = np.uint16(denoised * 65535)
-            np.save(os.path.join(args.save_dir, cam_model, f"{img_name}.npy"), denoised)
+            noisy = noisy.detach().cpu().squeeze(0).permute(1, 2, 0).numpy()
+            noisy = np.clip(noisy, 0, 1)
+            noisy = center_crop_numpy_img(noisy, args.eval_crop_size)
+            noisy = np.uint16(noisy * 65535)
+            np.save(os.path.join(args.save_dir, cam_model, f"{img_name}.npy"), noisy)
 
 
 def main(args):
@@ -75,9 +82,9 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     ## dir
-    parser.add_argument("--camera_config_dir", type=str, default="/datasets/camera_config.yaml")
-    parser.add_argument("--benchmark_dir", type=str, default="/datasets/final_release")
-    parser.add_argument("--checkpoint_dir", type=str, default="./checkpoints/baseline.bin")
+    parser.add_argument("--camera_config_dir", type=str, default="./datasets/camera_config.yaml")
+    parser.add_argument("--benchmark_dir", type=str, default="/data2/feiran/datasets/dev_phase_release")
+    parser.add_argument("--checkpoint_dir", type=str, default="./checkpoints/epoch_500.bin")
     parser.add_argument("--device", type=str, default="cuda:3")
 
     ## DO NOT change below setups
