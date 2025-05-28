@@ -7,7 +7,9 @@ This repository holds the baseline method for the ICCV-associated AIM 2025 RAW i
 ## Introduction of the baseline method
 The provided baseline trains a U-Net with synthesized noisy-clean image pairs. The data synthesis pipeline is based on the method proposed [here](https://arxiv.org/abs/2505.00045). Breifly, signal-dependent is synthesized as a Poisson noise using calibrated gains, and signal-independent noise is synthesized by directly sampling from camera-captured dark-shading-corrected dark frames.
 
-![Alt text](website/static/rawdenoise.png)
+![Overall framework](website/static/rawdenoise.png)
+
+![Noise synthesis baseline](website/static/noise_synth_baseline.png)
 
 
 ### Dataset
