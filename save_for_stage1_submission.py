@@ -57,18 +57,11 @@ def infer_and_save_for_submission(model, args):
             denoised = model(noisy)  ## if the output is not [1, 4, H, W], please change it to [1, 4, H, W]
 
             # ## processing for saving
-            # denoised = denoised.detach().cpu().squeeze(0).permute(1, 2, 0).numpy()
-            # denoised = np.clip(denoised, 0, 1)
-            # denoised = center_crop_numpy_img(denoised, args.eval_crop_size)
-            # denoised = np.uint16(denoised * 65535)
-            # np.save(os.path.join(args.save_dir, cam_model, f"{img_name}.npy"), denoised)
-
-            ## processing for saving
-            noisy = noisy.detach().cpu().squeeze(0).permute(1, 2, 0).numpy()
-            noisy = np.clip(noisy, 0, 1)
-            noisy = center_crop_numpy_img(noisy, args.eval_crop_size)
-            noisy = np.uint16(noisy * 65535)
-            np.save(os.path.join(args.save_dir, cam_model, f"{img_name}.npy"), noisy)
+            denoised = denoised.detach().cpu().squeeze(0).permute(1, 2, 0).numpy()
+            denoised = np.clip(denoised, 0, 1)
+            denoised = center_crop_numpy_img(denoised, args.eval_crop_size)
+            denoised = np.uint16(denoised * 65535)
+            np.save(os.path.join(args.save_dir, cam_model, f"{img_name}.npy"), denoised)
 
 
 def main(args):
