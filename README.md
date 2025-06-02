@@ -27,8 +27,9 @@ dev_phase_release/
     └── dark_frame/
         └── iso{}/  ## dark frames for each ISO for signal-independent noise profiling, 50 frames for each ISO
     └── test_data/
-        └── paired_input/  ## Noisy input images for the development-stage benchmarking. 
-        └── in_the_wild/  ## Sample images that will be used in the final stage for NR-IQA.
+        └── paired_input/  ## Noisy input images for the development-stage benchmarking.
+            └── scene{}_iso{}_dgain{}.CR2.  ## The digital gain needs to be applied to this noisy input for brightness alignment w.r.t. the GT
+        └── in_the_wild/  ## Sample images that will be used in the final stage for NR-IQA. These images are NOT used in scoring in the dev phase but just give a general concept about what will be used in the test 
 ├── sonya6700/
     └── 
 ├── sonyzve10m2/
