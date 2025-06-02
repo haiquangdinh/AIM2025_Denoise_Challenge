@@ -4,6 +4,13 @@
 This repository holds the baseline method for the ICCV-associated AIM 2025 RAW image denoising challenge. In this challenge, we seek algorithms that address the low-light RAW image denosing problem without reliance on real-world noisy-clean image pairs in a **camera-agnostic manner (i.e., a single network applicable to multiple cameras)**, such as noise-synthesis based methods. 
 
 
+## IMPORTANT NOTES
+- For participants who focus on **designing new network architectures and utilizing our default noise synthesis pipeline**, our provided `save_for_stage1_submission.py` file can be used directly. For participants who also **come up with new noise synthesis pipelines**, the `datasets/real_eval_dataset.py` file may also need updates.
+- We expect the predicted image to be already scaled-up by the designated digital gains (dgain), cropped to the range of `(0, 1)`, and stored in the RGGB format in the shape of `(H, W, 4)`.
+- Due to the restrictions of CodaLab, we need to **center_crop each image's visible area** to `(512,512,4)` in the on phase. Please keep the related settings as it is to avoid any errors.
+
+
+
 ## Introduction of the baseline method
 The provided baseline trains a U-Net with synthesized noisy-clean image pairs. The data synthesis pipeline is based on the method proposed [here](https://arxiv.org/abs/2505.00045). Breifly, signal-dependent is synthesized as a Poisson noise using calibrated gains, and signal-independent noise is synthesized by directly sampling from camera-captured dark-shading-corrected dark frames.
 
@@ -50,10 +57,5 @@ Most files' functions go by their names. Here we note some important ones:
 
 ## Save your results for submission
 `save_for_stage1_submission.py` implements the scripts that conduct model inference and results packing. Please modify the necessary lines to use your architecture and directories. 
-
-**IMPORTANT NOTE:** 
-- We expect the predicted image to be already scaled-up by the designated digital gains (dgain), cropped to the range of `(0, 1)`, and stored in the RGGB format in the shape of `(H, W, 4)`.
-- Due to the restrictions of CodaLab, we need to **center_crop each image's visible area** to `(512,512,4)` in the on phase. Please keep the related-setting as it is to avoid any errors.
-
 
 
