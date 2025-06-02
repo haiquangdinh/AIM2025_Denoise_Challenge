@@ -6,7 +6,7 @@ This repository holds the baseline method for the ICCV-associated AIM 2025 RAW i
 
 ## IMPORTANT NOTES
 - For participants who focus on **designing new network architectures and utilizing our default noise synthesis pipeline**, our provided `save_for_stage1_submission.py` file can be used directly. For participants who also **come up with new noise synthesis pipelines**, the `datasets/real_eval_dataset.py` file may also need updates.
-- We expect the predicted image to be already scaled-up by the designated digital gains (dgain), cropped to the range of `(0, 1)`, and stored in the RGGB format in the shape of `(H, W, 4)`.
+- We expect the predicted image to be **already scaled-up by the designated digital gains (dgain), cropped to the range of `(0, 1)`, and stored in the RGGB format in the shape of `(H, W, 4)`**.
 - Due to the restrictions of CodaLab, we need to **center_crop each image's visible area** to `(512,512,4)` in the on phase. Please keep the related settings as it is to avoid any errors.
 
 
