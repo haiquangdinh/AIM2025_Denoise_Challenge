@@ -12,7 +12,7 @@ This repository holds the baseline method for the ICCV-associated AIM 2025 RAW i
 
 
 ## Introduction of the baseline method
-The provided baseline trains a U-Net with synthesized noisy-clean image pairs. The data synthesis pipeline is based on the method proposed [here](https://arxiv.org/abs/2505.00045). Breifly, signal-dependent is synthesized as a Poisson noise using calibrated gains, and signal-independent noise is synthesized by directly sampling from camera-captured dark-shading-corrected dark frames.
+The provided baseline trains a U-Net with synthesized noisy-clean image pairs. The data synthesis pipeline is based on the method proposed [here](https://arxiv.org/abs/2505.00045). Briefly, signal-dependent noise is synthesized as a Poisson noise using calibrated gains, and signal-independent noise is synthesized by directly sampling from camera-captured dark-shading-corrected dark frames.
 
 ![Overall framework](website/static/rawdenoise.png)
 
@@ -22,7 +22,7 @@ The provided baseline trains a U-Net with synthesized noisy-clean image pairs. T
 ### Dataset
 **Clean images to synthesize noise on:** While there are no restrictions on the employed training datasets as long as detailed in the final fact sheet. We use **all the long-exposure Sony RAW images from the  [SID dataset](https://cchen156.github.io/SID.html)** to train the baseline.
 
-**Camera noise calibration materials & Inputs noisy images for benchmarking:** We include 4 cameras (SonyA7R4, SonyA6700, SonyZVE10M2, and Canon70D) in the benchmark dataset. To ease realistic noisy image synthesis, we release the 4-camera noise profiling materials. The folder structure is as follows:
+**Camera noise calibration materials & Inputs noisy images for benchmarking:** We include 4 cameras (SonyA7R4, SonyA6700, SonyZVE10M2, and Canon70D) in the benchmark dataset. To ease realistic noisy image synthesis, we release the 4-camera noise profiling materials. The overall folder structure is as follows:
 
 ```
 dev_phase_release/
@@ -36,7 +36,7 @@ dev_phase_release/
     └── test_data/
         └── paired_input/  ## Noisy input images for the development-stage benchmarking.
             └── scene{}_iso{}_dgain{}.CR2.  ## The digital gain needs to be applied to this noisy input for brightness alignment w.r.t. the GT
-        └── in_the_wild/  ## Sample images that will be used in the final stage for NR-IQA. These images are NOT used in scoring in the dev phase but just give a general concept about what will be used in the test 
+        └── in_the_wild/  ## Sample images that will be used in the final stage for NR-IQA. These images are NOT used in scoring in the dev phase, but just give a general concept about what will be used in the test 
 ├── sonya6700/
     └── 
 ├── sonyzve10m2/
