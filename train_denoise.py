@@ -132,15 +132,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     ## train-related
     parser.add_argument("--task", type=str, default="baseline")
-    parser.add_argument("--n_epoch", type=int, default=500)
+    parser.add_argument("--n_epoch", type=int, default=5)
     parser.add_argument("--train_patch_size", type=int, default=512)
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--bs", type=int, default=1)
     parser.add_argument("--n_crop_per_img", type=int, default=8)
     parser.add_argument("--train_dgain_range", type=list, default=[10, 200])
     parser.add_argument("--save_freq", type=int, default=100)
-    parser.add_argument("--clean_img_dir", type=str, default="/data/feiran/datasets/sid_sony/Sony/long")
-    parser.add_argument("--benchmark_dir", type=str, default="/data2/feiran/datasets/dev_phase_release")
+    parser.add_argument("--clean_img_dir", type=str, default="../Sony/sid_sony/Sony/long")
+    parser.add_argument("--benchmark_dir", type=str, default="../Sony/dev_phase_release")
     ## others
     parser.add_argument("--n_worker", type=int, default=16)
     parser.add_argument("--seed", type=int, default=0, help="random seed")

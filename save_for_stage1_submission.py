@@ -15,7 +15,6 @@ from models.ELD_models import UNetSeeInDark
 
 from utils.utils import *
 
-
 def build_model(args):
     model = UNetSeeInDark().to(args.device)
     model.load_state_dict(torch.load(args.checkpoint_dir, map_location="cpu", weights_only=False)["model"], strict=True)
@@ -76,9 +75,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     ## dir
     parser.add_argument("--camera_config_dir", type=str, default="./datasets/camera_config.yaml")
-    parser.add_argument("--benchmark_dir", type=str, default="/data2/feiran/datasets/dev_phase_release")
+    parser.add_argument("--benchmark_dir", type=str, default="../Sony/dev_phase_release")
     parser.add_argument("--checkpoint_dir", type=str, default="./checkpoints/epoch_500.bin")
-    parser.add_argument("--device", type=str, default="cuda:3")
+    parser.add_argument("--device", type=str, default="cuda:0")
 
     ## DO NOT change below setups
     parser.add_argument("--save_dir", type=str, default="./saved_res_for_submission")
