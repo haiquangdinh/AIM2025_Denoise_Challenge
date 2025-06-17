@@ -1,5 +1,5 @@
 task: baseline
-n_epoch: 5
+n_epoch: 500
 train_patch_size: 512
 lr: 0.0002
 bs: 1
@@ -16,7 +16,71 @@ seed: 0
 
 
 epoch: 1, train loss: 2.8481e-02, train psnr: 30.17
-epoch: 2, train loss: 1.5344e-02, train psnr: 33.84
-epoch: 3, train loss: 1.4535e-02, train psnr: 34.38
-epoch: 4, train loss: 1.3937e-02, train psnr: 34.51
-epoch: 5, train loss: 1.2882e-02, train psnr: 35.19
+New best model saved with PSNR: 30.17
+epoch: 2, train loss: 1.5447e-02, train psnr: 33.79
+New best model saved with PSNR: 33.79
+epoch: 3, train loss: 1.4678e-02, train psnr: 34.28
+New best model saved with PSNR: 34.28
+epoch: 4, train loss: 1.4052e-02, train psnr: 34.48
+New best model saved with PSNR: 34.48
+epoch: 5, train loss: 1.2659e-02, train psnr: 35.23
+New best model saved with PSNR: 35.23
+epoch: 6, train loss: 1.2113e-02, train psnr: 35.55
+New best model saved with PSNR: 35.55
+epoch: 7, train loss: 1.2320e-02, train psnr: 35.70
+New best model saved with PSNR: 35.70
+epoch: 8, train loss: 1.1408e-02, train psnr: 36.16
+New best model saved with PSNR: 36.16
+epoch: 9, train loss: 1.0593e-02, train psnr: 36.83
+New best model saved with PSNR: 36.83
+epoch: 10, train loss: 1.0895e-02, train psnr: 36.69
+Patience counter: 1/5
+epoch: 11, train loss: 1.0404e-02, train psnr: 37.11
+New best model saved with PSNR: 37.11
+epoch: 12, train loss: 1.0069e-02, train psnr: 37.43
+New best model saved with PSNR: 37.43
+epoch: 13, train loss: 1.0085e-02, train psnr: 37.49
+New best model saved with PSNR: 37.49
+epoch: 14, train loss: 1.0112e-02, train psnr: 37.53
+New best model saved with PSNR: 37.53
+epoch: 15, train loss: 9.6225e-03, train psnr: 37.87
+New best model saved with PSNR: 37.87
+epoch: 16, train loss: 9.5821e-03, train psnr: 38.03
+New best model saved with PSNR: 38.03
+epoch: 17, train loss: 9.7919e-03, train psnr: 37.72
+Patience counter: 1/5
+epoch: 18, train loss: 9.6498e-03, train psnr: 37.96
+Patience counter: 2/5
+epoch: 19, train loss: 9.7281e-03, train psnr: 37.98
+Patience counter: 3/5
+epoch: 20, train loss: 9.1154e-03, train psnr: 38.40
+New best model saved with PSNR: 38.40
+epoch: 21, train loss: 9.4867e-03, train psnr: 38.18
+Patience counter: 1/5
+epoch: 22, train loss: 9.2143e-03, train psnr: 38.44
+New best model saved with PSNR: 38.44
+epoch: 23, train loss: 9.3536e-03, train psnr: 38.40
+Patience counter: 1/5
+epoch: 24, train loss: 8.9286e-03, train psnr: 38.66
+New best model saved with PSNR: 38.66
+epoch: 25, train loss: 9.2046e-03, train psnr: 38.50
+Patience counter: 1/5
+epoch: 26, train loss: 8.9922e-03, train psnr: 38.63
+Patience counter: 2/5
+epoch: 27, train loss: 9.0299e-03, train psnr: 38.47
+Patience counter: 3/5
+epoch: 28, train loss: 9.0267e-03, train psnr: 38.59
+Patience counter: 4/5
+epoch: 29, train loss: 8.4928e-03, train psnr: 39.12
+New best model saved with PSNR: 39.12
+epoch: 30, train loss: 9.3014e-03, train psnr: 38.37
+Patience counter: 1/5
+epoch: 31, train loss: 8.7474e-03, train psnr: 38.99
+Patience counter: 2/5
+epoch: 32, train loss: 8.9484e-03, train psnr: 38.65
+Patience counter: 3/5
+epoch: 33, train loss: 8.7133e-03, train psnr: 38.88
+Patience counter: 4/5
+epoch: 34, train loss: 8.9103e-03, train psnr: 38.63
+Patience counter: 5/5
+Early stopping triggered

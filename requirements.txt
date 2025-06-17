@@ -3,3 +3,4 @@ rawpy
 pyiqa
 opencv-python
 accelerate
+tqdm

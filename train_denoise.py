@@ -102,6 +102,11 @@ def main(args):
     ## put all things to accelerator
     model, optimizer, train_loader = accelerator.prepare(model, optimizer, train_loader)
 
+    # early stopping
+    best_psnr = 0.0
+    patience = 5
+    patience_counter = 0
+
     ## train
     for epoch in range(1, args.n_epoch + 1):
         train_loss, train_psnr = train_one_ep(model, train_loader, optimizer, criterion, accelerator, args)
@@ -122,6 +127,18 @@ def main(args):
                 log=logfile,
                 notime=True,
             )
+            if train_psnr > best_psnr:
+                best_psnr = train_psnr
+                patience_counter = 0
+                state_dict = {"model": accelerator.get_state_dict(model)}
+                accelerator.save(state_dict, f"./checkpoints/{args.task}/best.bin")
+                log(f"New best model saved with PSNR: {best_psnr:.2f}", log=logfile, notime=True)
+            else:
+                patience_counter += 1
+                log(f"Patience counter: {patience_counter}/{patience}", log=logfile, notime=True)
+            if patience_counter >= patience:
+                log("Early stopping triggered", log=logfile, notime=True)
+                break
 
     accelerator.end_training()
 
@@ -132,7 +149,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     ## train-related
     parser.add_argument("--task", type=str, default="baseline")
-    parser.add_argument("--n_epoch", type=int, default=5)
+    parser.add_argument("--n_epoch", type=int, default=500)
     parser.add_argument("--train_patch_size", type=int, default=512)
     parser.add_argument("--lr", type=float, default=2e-4)
     parser.add_argument("--bs", type=int, default=1)
